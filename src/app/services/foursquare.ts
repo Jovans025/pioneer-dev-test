@@ -1,11 +1,11 @@
-export const formatQuery = async (query: string): Promise<PlaceQuery> => {
+export const getPlaces = async (query: PlaceQuery) => {
     try {
-        const response = await fetch('/api/execute', {
+        const response = await fetch('/api/foursquare', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ query })
+            body: JSON.stringify({ parameters: query.parameters })
         });
 
         if (!response.ok) {
@@ -13,9 +13,9 @@ export const formatQuery = async (query: string): Promise<PlaceQuery> => {
         }
 
         const data = await response.json();
-        return data.data;
+        return data;
     } catch (error) {
         console.error('Error:', error);
         throw error;
     }
-}
+}   
