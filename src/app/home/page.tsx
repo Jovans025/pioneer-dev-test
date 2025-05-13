@@ -1,8 +1,8 @@
 'use client'
 
 import Search from "@/components/SearchForm";
-import { formatQuery } from "@/app/services/openai";
-import {getPlaces} from "@/app/services/foursquare"
+import { formatQuery } from "@/services/openai";
+import {getPlaces} from "@/services/foursquare"
 import {SearchResult} from "@/components/SearchResult";
 import { useState } from "react";
 
