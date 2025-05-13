@@ -10,3 +10,7 @@ There is an env.example file that can be use as a guide for the env variables be
 
 ## Notes
 Right now, my newly created Foursquare account is still under review and Im not sure how long I should wait before I can actually generate an API key. So instead, the the endpoint for fetching the places (/api/foursquare) I just used a sample mockdata (and commented out the actual fetch code) where the schema is actually coming from their API documentation. I will just update if ever I have now the API key to use the actual request.
+
+## Deploying
+
+I deployed the app using Google Cloud Run. The app is available at https://restaurant-finder-39894819998.us-central1.run.app/
