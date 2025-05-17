@@ -7,35 +7,20 @@ export async function POST(req: Request) {
  
         const queryString = new URLSearchParams(parameters).toString();
 
-        return NextResponse.json({ 
-            "results": sampleMockData ,
-            "context": {
-                "geo_bounds": {
-                    "circle": {
-                        "center": {
-                        "latitude": 0,
-                        "longitude": 0
-                        },
-                        "radius": 0
-                }
-                }
-            } 
+        const response = await fetch(`https://api.foursquare.com/v3/places/search?${queryString}`, {
+            method: 'GET',
+            headers:{
+              accept: 'application/json',
+              Authorization:  process.env.FOURSQUARE_API_KEY as string,
+            }
         });
- 
-        // const response = await fetch(`https://api.foursquare.com/v3/places/search?${queryString}`, {
-        //     method: 'GET',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         'Authorization': process.env.FOURSQUARE_API_KEY as string,
-        //     } 
-        // });
 
-        // if (!response.ok) {
-        //     throw new Error('Failed to get response');
-        // }
+        if (!response.ok) {
+            throw new Error('Failed to get response');  
+        }
 
-        // const data = await response.json();
-        // return NextResponse.json(data.data);
+        const data = await response.json();
+        return NextResponse.json(data || []);
     } catch (error) {
         console.error('Error:', error);
         return NextResponse.json({ error: 'Failed to get response' }, { status: 500 });

@@ -14,7 +14,7 @@ export function SearchResult({ place }: { place: Place }) {
                  <p className="text-gray-600">{place.price}</p> 
             </div>
             <div className="w-1/2 text-right text-sm"> 
-                {place.hours_popular.map((hour: any) => (
+                {place?.hours_popular?.map?.((hour: any) => (
                     <p key={hour.day} className="text-gray-600">{moment().day(hour.day).format('ddd')} {hour.open} - {hour.close}</p>
                 ))} 
             </div>

@@ -25,8 +25,7 @@ function Home() {
             setIsLoading(false)
         }
     }
-
-    console.log("places",places)
+ 
 
     return (
         <div className="max-w-2xl mx-auto py-12">  
